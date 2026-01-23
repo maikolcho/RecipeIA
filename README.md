@@ -12,6 +12,13 @@ Aplicación iOS desarrollada en SwiftUI para la búsqueda y gestión de recetas.
 - Swift
 - SwiftUI
 - Xcode
+- Arquitectura MVVM
+
 
 ## Estado
 Proyecto personal en desarrollo
+
+## Autor
+Nelson Villalba  
+Proyecto personal iOS
+
