@@ -1,24 +1,27 @@
-# RecipeIA
+# RecipeIA 🍽️📱
 
-Aplicación iOS desarrollada en SwiftUI para la búsqueda y gestión de recetas.
+Aplicación Android desarrollada en **Java** que permite buscar recetas de forma inteligente a partir de los ingredientes disponibles en la nevera.
 
-## Funcionalidades
-- Búsqueda de recetas según ingredientes disponibles.
-- Filtrado por categorías.
-- Guardado de recetas favoritas.
-- Creación de recetas personalizadas por el usuario.
+La app integra una **API con Inteligencia Artificial**, capaz de sugerir recetas personalizadas según los ingredientes introducidos por el usuario, optimizando la experiencia y evitando desperdicio de alimentos.
 
-## Tecnologías
-- Swift
-- SwiftUI
-- Xcode
-- Arquitectura MVVM
+## 🚀 Funcionalidades
+- 🔍 Búsqueda inteligente de recetas según ingredientes disponibles
+- 🤖 Integración de API con IA para recomendaciones personalizadas
+- 🗂️ Filtrado de recetas por categorías
+- ⭐ Guardado de recetas favoritas
+- ✍️ Creación de recetas personalizadas por el usuario
+- 🧭 Navegación mediante Bottom Navigation y Fragments
 
+## 🛠️ Tecnologías utilizadas
+- Java
+- Android Studio
+- API REST con IA
+- Bottom Navigation
+- Fragments
+- Git & GitHub
 
-## Estado
-Proyecto personal en desarrollo
+## 📌 Estado del proyecto
+Proyecto personal en desarrollo, enfocado al aprendizaje continuo y a la mejora de habilidades en desarrollo Android.
 
-## Autor
-Nelson Villalba  
-Proyecto personal iOS
-
+## 👨‍💻 Autor
+Nelson Ariel Villalba Vergara
