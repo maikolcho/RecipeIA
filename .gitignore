@@ -1,0 +1,11 @@
+# Claves privadas
+RecipeIA/Secrets.swift
+
+# Xcode
+xcuserdata/
+DerivedData/
+build/
+*.xcuserstate
+
+# macOS
+.DS_Store
