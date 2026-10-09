@@ -4,6 +4,13 @@
 //
 //  Created by Maik on 27/11/24.
 //
+//
+//  NombreDelArchivo.swift
+//  RecipeIA
+//
+//  Created by Nelson Ariel Villalba Vergara on 2025-03-17.
+//  Copyright © 2025 Nelson Ariel Villalba Vergara. Todos los derechos reservados.
+//
 
 import XCTest
 @testable import RecipeIA
