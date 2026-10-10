@@ -179,20 +179,27 @@ class RecipesViewModel: ObservableObject {
         showError = false
 
         do {
-            let fetchedRecipes = try await fetchRecipesFromAPI(ingredientes: ingredientes)
-
-            let apiRecipes = fetchedRecipes.map { apiRecipe in
-                Recipe(
-                    id: UUID(),
-                    nombre: apiRecipe.nombre,
-                    image: apiRecipe.image,
-                    descripcion: "Receta obtenida de la API.",
-                    ingredientes: "Ingredientes no disponibles en API.",
-                    pasos: "Pasos no disponibles en API.",
-                    categoria: .desayuno,
-                    datePublished: "2024-03-30",
-                    url: "https://www.themealdb.com/meal/\(apiRecipe.id)"
-                )
+            let apiRecipes: [Recipe]
+            do {
+                // 1) Recetas generadas con IA (Gemini)
+                apiRecipes = try await GeminiAPI().generarRecetas(ingredientes: ingredientes)
+            } catch {
+                // 2) Respaldo: búsqueda de alimentos en Nutritionix
+                print("⚠️ Gemini no disponible (\(error.localizedDescription)). Usando Nutritionix.")
+                let fetchedRecipes = try await fetchRecipesFromAPI(ingredientes: ingredientes)
+                apiRecipes = fetchedRecipes.map { apiRecipe in
+                    Recipe(
+                        id: UUID(),
+                        nombre: apiRecipe.nombre,
+                        image: apiRecipe.image,
+                        descripcion: "Alimento relacionado con tu búsqueda (Nutritionix).",
+                        ingredientes: "Ingredientes no disponibles.",
+                        pasos: "Pasos no disponibles.",
+                        categoria: .sinCategoria,
+                        datePublished: apiRecipe.datePublished,
+                        url: "https://www.nutritionix.com"
+                    )
+                }
             }
 
             let userFilteredRecipes = userRecipes.filter { recipe in

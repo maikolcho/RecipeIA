@@ -50,7 +50,6 @@ class NutritionixAPI {
 
             let result = try JSONDecoder().decode(NutritionixResponse.self, from: data)
 
-            print("✅ Respuesta JSON correcta:", result)
 
             return result.common.map { item in
                 Recipe(
