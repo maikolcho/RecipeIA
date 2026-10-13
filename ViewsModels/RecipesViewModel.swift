@@ -183,10 +183,15 @@ class RecipesViewModel: ObservableObject {
             do {
                 // 1) Recetas generadas con IA (Gemini)
                 apiRecipes = try await GeminiAPI().generarRecetas(ingredientes: ingredientes)
-            } catch {
+            } catch let geminiError {
                 // 2) Respaldo: búsqueda de alimentos en Nutritionix
-                print("⚠️ Gemini no disponible (\(error.localizedDescription)). Usando Nutritionix.")
-                let fetchedRecipes = try await fetchRecipesFromAPI(ingredientes: ingredientes)
+                print("⚠️ Gemini no disponible (\(geminiError.localizedDescription)). Usando Nutritionix.")
+                let fetchedRecipes: [Recipe]
+                do {
+                    fetchedRecipes = try await fetchRecipesFromAPI(ingredientes: ingredientes)
+                } catch {
+                    throw geminiError  // el motivo útil es el de la IA, no el del respaldo
+                }
                 apiRecipes = fetchedRecipes.map { apiRecipe in
                     Recipe(
                         id: UUID(),
@@ -216,7 +221,7 @@ class RecipesViewModel: ObservableObject {
 
             isLoading = false
         } catch {
-            mostrarError(mensaje: "Error al obtener recetas de la API.")
+            mostrarError(mensaje: (error as? LocalizedError)?.errorDescription ?? "Error al obtener recetas de la API.")
         }
     }
 
